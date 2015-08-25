@@ -1,0 +1,41 @@
+package storage.ui;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
+/**
+ * Shows open file dialog.
+ *
+ * @author www
+ */
+public abstract class OpenFileAction extends AbstractAction {
+    private final static ImageIcon OPEN_ICON = new ImageIcon(new byte[]{71, 73, 70, 56, 57, 97, 30, 0, 24, 0, (byte) 230, 0, 0, (byte) 163, 119, 75, (byte) 221, (byte) 155, 87, 0, (byte) 255, 0, (byte) 218, (byte) 217, (byte) 214, (byte) 208, (byte) 166, 85, (byte) 253, (byte) 221, (byte) 146, 68, 90, 127, (byte) 240, (byte) 205, 102, (byte) 155, (byte) 164, (byte) 179, (byte) 182, (byte) 152, 125, (byte) 222, (byte) 167, 112, (byte) 230, (byte) 230, (byte) 230, (byte) 233, (byte) 193, (byte) 144, (byte) 234, (byte) 204, 120, (byte) 255, (byte) 235, (byte) 159, 109, 123, (byte) 146, (byte) 207, (byte) 200, (byte) 191, (byte) 184, (byte) 161, (byte) 138, (byte) 183, (byte) 143, 85, (byte) 238, (byte) 238, (byte) 238, (byte) 248, (byte) 220, (byte) 131, (byte) 223, (byte) 180, (byte) 134, (byte) 255, (byte) 239, (byte) 172, (byte) 240, (byte) 197, 98, (byte) 250, (byte) 230, (byte) 172, (byte) 238, (byte) 210, (byte) 182, (byte) 255, (byte) 231, (byte) 171, (byte) 149, (byte) 159, (byte) 175, (byte) 234, (byte) 202, 115, (byte) 205, (byte) 163, 124, (byte) 181, (byte) 144, 89, (byte) 182, (byte) 188, (byte) 198, (byte) 174, (byte) 138, 88, (byte) 215, (byte) 172, (byte) 130, (byte) 221, (byte) 189, 116, (byte) 241, (byte) 201, 109, (byte) 249, (byte) 210, 119, 121, (byte) 135, (byte) 155, (byte) 230, (byte) 215, (byte) 198, (byte) 227, (byte) 183, (byte) 138, (byte) 199, (byte) 168, 116, (byte) 253, (byte) 224, (byte) 155, (byte) 204, (byte) 153, 102, (byte) 255, (byte) 241, (byte) 188, (byte) 208, (byte) 213, (byte) 220, (byte) 247, (byte) 217, (byte) 129, (byte) 249, (byte) 223, (byte) 140, (byte) 166, (byte) 129, 89, (byte) 178, (byte) 184, (byte) 194, (byte) 229, (byte) 205, (byte) 181, (byte) 221, (byte) 179, 111, (byte) 242, (byte) 219, (byte) 157, (byte) 200, (byte) 188, (byte) 170, (byte) 187, (byte) 134, 82, (byte) 206, (byte) 173, 120, (byte) 247, (byte) 207, 115, (byte) 229, (byte) 174, 120, (byte) 253, (byte) 226, (byte) 164, (byte) 246, (byte) 209, 124, 82, 101, (byte) 129, (byte) 204, (byte) 204, (byte) 204, (byte) 227, (byte) 199, (byte) 132, (byte) 197, (byte) 181, (byte) 159, (byte) 193, (byte) 151, 110, (byte) 229, (byte) 190, (byte) 141, (byte) 216, (byte) 179, 115, (byte) 246, (byte) 215, 108, (byte) 222, (byte) 222, (byte) 222, (byte) 214, (byte) 161, 104, (byte) 137, (byte) 148, (byte) 167, (byte) 173, (byte) 137, 105, (byte) 198, (byte) 159, 112, (byte) 255, (byte) 230, (byte) 140, (byte) 255, (byte) 226, 125, (byte) 232, (byte) 199, 112, (byte) 210, (byte) 179, (byte) 144, (byte) 255, (byte) 238, (byte) 182, (byte) 255, (byte) 239, (byte) 167, (byte) 250, (byte) 220, 115, (byte) 196, (byte) 138, 88, (byte) 169, (byte) 130, 92, (byte) 229, (byte) 177, 117, (byte) 228, (byte) 181, (byte) 131, (byte) 246, (byte) 205, 110, (byte) 168, 123, 81, (byte) 246, (byte) 246, (byte) 246, (byte) 255, (byte) 222, (byte) 132, (byte) 255, (byte) 232, (byte) 156, (byte) 218, (byte) 176, 91, (byte) 206, (byte) 165, 97, (byte) 216, (byte) 215, (byte) 209, (byte) 189, (byte) 168, (byte) 150, (byte) 246, (byte) 212, 124, (byte) 244, (byte) 201, 105, (byte) 255, (byte) 247, (byte) 189, (byte) 190, (byte) 149, 88, (byte) 244, (byte) 206, (byte) 137, (byte) 230, (byte) 190, 99, (byte) 213, (byte) 179, 123, (byte) 240, (byte) 198, (byte) 141, (byte) 239, (byte) 197, (byte) 148, (byte) 172, 125, 77, (byte) 239, (byte) 210, 124, (byte) 186, (byte) 192, (byte) 202, (byte) 238, (byte) 218, (byte) 196, (byte) 250, (byte) 226, (byte) 165, (byte) 186, (byte) 137, 77, (byte) 255, (byte) 214, 123, (byte) 255, (byte) 231, (byte) 148, (byte) 181, (byte) 139, 90, (byte) 255, (byte) 242, (byte) 194, (byte) 255, (byte) 229, (byte) 165, (byte) 228, (byte) 189, 113, (byte) 197, (byte) 155, 121, (byte) 214, (byte) 165, 123, (byte) 252, (byte) 218, (byte) 138, (byte) 228, (byte) 180, 124, (byte) 235, (byte) 205, 119, (byte) 255, (byte) 224, 117, (byte) 202, (byte) 167, 115, (byte) 173, (byte) 132, 95, 73, 93, 127, (byte) 214, (byte) 217, (byte) 221, (byte) 255, (byte) 227, (byte) 134, (byte) 241, (byte) 209, 105, (byte) 225, (byte) 173, 119, (byte) 229, (byte) 199, (byte) 144, (byte) 250, (byte) 230, (byte) 179, 33, (byte) 249, 4, 5, 20, 0, 2, 0, 44, 0, 0, 0, 0, 30, 0, 24, 0, 0, 7, (byte) 255, (byte) 128, 2, (byte) 130, (byte) 131, (byte) 132, (byte) 133, (byte) 131, 44, 15, 59, 15, 103, (byte) 134, (byte) 141, (byte) 142, (byte) 131, 122, 15, 31, 48, 48, 15, 8, 2, 37, 85, (byte) 143, (byte) 155, 2, 69, 122, 11, (byte) 160, 60, 59, 8, 59, 19, (byte) 132, 25, 39, (byte) 169, (byte) 170, (byte) 169, 104, (byte) 141, 19, (byte) 166, (byte) 130, 27, 59, 121, 11, (byte) 131, 104, 64, 76, 110, (byte) 186, (byte) 186, 76, 24, 12, 49, (byte) 155, 37, (byte) 179, 6, 67, (byte) 131, 21, 127, 22, (byte) 201, (byte) 202, 14, 14, 105, 64, 38, (byte) 155, 19, 11, 67, (byte) 181, (byte) 130, 21, 43, 77, (byte) 217, (byte) 218, (byte) 204, 14, 57, 99, 82, (byte) 224, 116, (byte) 226, 56, (byte) 228, 126, (byte) 176, (byte) 132, (byte) 215, 22, (byte) 218, 77, (byte) 204, 108, 108, 72, (byte) 238, (byte) 238, 123, (byte) 243, 20, 20, 92, 79, (byte) 213, (byte) 232, (byte) 216, (byte) 219, 14, (byte) 239, (byte) 243, 73, 73, (byte) 236, 56, 113, 34, (byte) 164, 32, (byte) 159, 3, 42, (byte) 138, 21, 10, (byte) 177, (byte) 143, (byte) 205, (byte) 149, 43, 115, 86, (byte) 165, 2, 71, 17, 28, 57, 114, 10, (byte) 136, 16, 9, 32, (byte) 128, 97, 63, 36, 102, (byte) 148, 48, (byte) 200, (byte) 161, (byte) 161, (byte) 164, (byte) 201, (byte) 147, 40, 77, (byte) 246, 80, (byte) 179, 32, 4, (byte) 147, 126, 45, 56, (byte) 200, (byte) 200, 81, (byte) 128, (byte) 132, (byte) 205, (byte) 155, 56, 115, (byte) 222, (byte) 172, (byte) 225, 99, 8, (byte) 195, 43, 72, 26, (byte) 192, 1, (byte) 163, 97, (byte) 141, (byte) 206, (byte) 163, 56, (byte) 225, 24, 25, (byte) 176, 64, 14, (byte) 147, 43, 45, 68, 4, 121, 51, 7, (byte) 169, 85, 18, 101, 32, 20, (byte) 235, (byte) 240, (byte) 180, 1, (byte) 138, 20, 111, (byte) 174, 34, (byte) 205, (byte) 146, 96, (byte) 136, (byte) 169, 14, 22, 92, (byte) 136, (byte) 176, (byte) 161, (byte) 129, (byte) 203, (byte) 141, (byte) 183, 112, 124, (byte) 227, (byte) 202, 125, 59, (byte) 130, (byte) 138, (byte) 150, 106, 29, 28, (byte) 212, (byte) 249, (byte) 154, 98, (byte) 138, (byte) 223, (byte) 191, (byte) 128, 3, (byte) 255, (byte) 149, (byte) 176, 69, (byte) 161, (byte) 128, 14, 77, 68, (byte) 136, (byte) 209, 112, (byte) 163, (byte) 139, (byte) 227, (byte) 199, (byte) 144, 35, 59, 14, (byte) 243, (byte) 226, (byte) 238, (byte) 160, 56, 51, (byte) 238, 80, (byte) 149, (byte) 204, 57, 114, 25, 26, (byte) 134, 5, (byte) 196, (byte) 233, (byte) 177, (byte) 184, (byte) 203, (byte) 133, (byte) 211, (byte) 168, 83, (byte) 171, 62, (byte) 141, 101, 105, (byte) 161, 56, 98, 114, (byte) 232, 88, 77, 91, 53, 0, 30, (byte) 249, 4, (byte) 253, 56, (byte) 146, (byte) 162, (byte) 182, (byte) 239, 11, 4, 34, (byte) 132, 22, (byte) 180, 4, (byte) 143, 113, 60, 80, (byte) 160, (byte) 180, 89, (byte) 206, 28, (byte) 132, 115, (byte) 231, 109, (byte) 190, 16, 30, (byte) 224, 104, (byte) 218, (byte) 144, (byte) 235, (byte) 216, (byte) 179, 107, (byte) 207, (byte) 158, 123, 80, 32, 0, 59});
+    private final static IFileChooser chooser = new ChooseFileDialog("ZI World Data|xml;gz", "Open XML dump ...", null, false);
+
+    /**
+     * Creates open file action with custom icon and default description string.
+     */
+    public OpenFileAction() {
+        super("Open", OPEN_ICON);
+        putValue(SHORT_DESCRIPTION, "Open XML file");
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK));
+    }
+
+    /**
+     * Invoked when an action occurs.
+     */
+    public void actionPerformed(ActionEvent e) {
+        String filename = chooser.choose();
+        if (filename != null) {
+            processFile(filename);
+        }
+    }
+
+    /**
+     * Processes file whose name was specified by user in open file dialog.
+     *
+     * @param filename name of file to process.
+     */
+    public abstract void processFile(String filename);
+}
